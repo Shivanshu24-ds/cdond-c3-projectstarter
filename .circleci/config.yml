@@ -426,7 +426,7 @@ jobs:
                       list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
                       --no-paginate --output text)
             echo "Old Wokflow ID: $OLD_WORKFLOW_ID"
-            curl https://kvdb.io/3uPKwkHBWbwMWo7giejVRd/old_workflow_id -d "${OLD_WORKFLOW_ID}"
+            curl https://kvdb.io/FTE3SkZe7Vn5iNgSsFGguy/old_workflow_id -d "${OLD_WORKFLOW_ID}"
       - run:
           name: Update cloudfront distribution
           command: |
@@ -451,7 +451,7 @@ cleanup:
                 --query "StackSummaries[*].StackName" \
                 --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
             echo Stack names: "${STACKS[@]}"
-            export OldWorkflowID=$(curl --insecure https://kvdb.io/3uPKwkHBWbwMWo7giejVRd/old_workflow_id)
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/FTE3SkZe7Vn5iNgSsFGguy/old_workflow_id)
             echo Old Workflow ID: $OldWorkflowID 
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
